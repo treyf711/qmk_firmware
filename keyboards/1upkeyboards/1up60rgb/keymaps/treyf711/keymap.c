@@ -1,5 +1,8 @@
 #include QMK_KEYBOARD_H
 
+const uint16_t PROGMEM reset_combo[] = {KC_R, KC_S, KC_T, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {COMBO(reset_combo, RESET)};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	LAYOUT_all(
@@ -30,6 +33,22 @@ void matrix_init_user(void) {
 }
 
 void matrix_scan_user(void) {
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+	switch (state) {
+		case 1:
+			rgblight_enable_noeeprom();
+			rgblight_setrgb(RGB_CYAN);
+			break;
+		case 2:
+			rgblight_enable_noeeprom();
+			rgblight_setrgb(RGB_CYAN);
+			break;
+		default:
+			rgblight_disable_noeeprom();
+	}
+	return state;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
