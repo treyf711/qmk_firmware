@@ -43,10 +43,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 			break;
 		case 2:
 			rgblight_enable_noeeprom();
-			rgblight_setrgb(RGB_CYAN);
+			rgblight_setrgb(RGB_GREEN);
 			break;
 		default:
 			rgblight_disable_noeeprom();
+            break;
 	}
 	return state;
 }
